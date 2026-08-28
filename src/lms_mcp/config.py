@@ -49,7 +49,7 @@ class Config:
     enable_destructive: bool = False
 
     mcp_host: str = "0.0.0.0"
-    mcp_port: int = 8000
+    mcp_port: int = 9055
     mcp_path: str = "/mcp"
     auth_token: str | None = None
     allow_anonymous: bool = False
@@ -91,7 +91,7 @@ class Config:
             default_player=(src.get("LMS_DEFAULT_PLAYER") or "").strip() or None,
             enable_destructive=_bool(src.get("LMS_ENABLE_DESTRUCTIVE")),
             mcp_host=(src.get("MCP_HOST") or "0.0.0.0").strip(),
-            mcp_port=_int(src.get("MCP_PORT"), 8000),
+            mcp_port=_int(src.get("MCP_PORT"), 9055),
             mcp_path=path,
             auth_token=token,
             allow_anonymous=allow_anonymous,
