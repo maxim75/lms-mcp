@@ -58,7 +58,7 @@ docker compose up --build -d
 ```
 
 ```bash
-curl -s localhost:8000/health
+curl -s localhost:9055/health
 ```
 
 ### Coolify
@@ -67,7 +67,7 @@ curl -s localhost:8000/health
    from the committed `Dockerfile`.
 2. Set the environment variables from `.env.example` — at minimum `LMS_HOST` and
    `MCP_AUTH_TOKEN`. Generate the token with `openssl rand -hex 32`.
-3. Map your domain to the service's port **8000**.
+3. Map your domain to the service's port **9055**.
 4. Point the health check at `/health`. It returns `200` while Lyrion is reachable and
    `503` when it is not, so a dead media server shows up as a degraded container rather
    than a silently broken endpoint.
@@ -108,7 +108,7 @@ the same way.
 | `LMS_ENABLE_DESTRUCTIVE` | `false` | Register the six destructive tools |
 | `MCP_AUTH_TOKEN` | — | **Required.** Bearer token clients must present |
 | `MCP_ALLOW_ANONYMOUS` | `false` | Run with no authentication (the server refuses to start without one of these two) |
-| `MCP_HOST` / `MCP_PORT` | `0.0.0.0` / `8000` | Listener |
+| `MCP_HOST` / `MCP_PORT` | `0.0.0.0` / `9055` | Listener |
 | `MCP_PATH` | `/mcp` | Path of the MCP endpoint |
 | `MCP_ALLOWED_HOSTS` | — | Comma-separated `Host`/`Origin` allow-list; leave unset behind a proxy |
 | `LOG_LEVEL` | `INFO` | Python log level |

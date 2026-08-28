@@ -14,17 +14,17 @@ services:
       # Required: clients must send `Authorization: Bearer <MCP_AUTH_TOKEN>`.
       MCP_AUTH_TOKEN: ${MCP_AUTH_TOKEN:?set MCP_AUTH_TOKEN to a secret value}
       MCP_HOST: 0.0.0.0
-      MCP_PORT: 8000
+      MCP_PORT: 9055
       MCP_PATH: ${MCP_PATH:-/mcp}
       LOG_LEVEL: ${LOG_LEVEL:-INFO}
     ports:
-      - "${MCP_PUBLISHED_PORT:-8000}:8000"
+      - "${MCP_PUBLISHED_PORT:-9055}:9055"
     healthcheck:
       test:
         - CMD
         - python
         - -c
-        - import urllib.request,sys; sys.exit(0 if urllib.request.urlopen("http://127.0.0.1:8000/health", timeout=4).status == 200 else 1)
+        - import urllib.request,sys; sys.exit(0 if urllib.request.urlopen("http://127.0.0.1:9055/health", timeout=4).status == 200 else 1)
       interval: 30s
       timeout: 5s
       start_period: 10s
